@@ -1,0 +1,72 @@
+#include <iostream>
+
+using namespace std;
+
+int maksimal = 5, front = 0, back = 0;
+string antrianBank[5];
+
+
+//isFull / cek data jika antrian Penuh
+bool isFullArray()
+{
+	if (back == maksimal){
+		return true;
+	}else{
+		return false;
+	}
+}
+
+//isEmpty / cek data jika antrian kosong
+bool isEmptyArray()
+{
+	if (back == 0){
+		return true;
+	}else{
+		return false;
+	}
+}
+
+//Penambahan data
+void enqueueArray(string data){
+	if(isFullArray() ){
+		cout<<"Antrian Penuh"<<endl;
+	}else{
+		if(isEmptyArray()){	
+			antrianBank[0] = data;
+			front++;
+			back++;
+		}else{
+			antrianBank[back] = data;
+			back++;
+		}
+	}	
+}
+
+//Menampilkan data
+
+void viewArray()
+{
+	cout<<"Data Antrian Bank: "<<endl;
+	if(isEmptyArray()){
+		cout<<"Antrian Kosong"<<endl;
+		}else{
+		for(int i = 0; i < maksimal; i++){
+			if(antrianBank[i] !=""){
+				cout<<i+1<<"."<<antrianBank[i]<<endl;
+			}else{
+				cout<<i+1<<".(kosong)"<<endl;
+			}
+		}
+	}
+}
+
+
+int main(){
+	enqueueArray("Blabar");
+	enqueueArray("Dobleh");
+	enqueueArray("Agus");
+	enqueueArray("Dwi");
+	enqueueArray("Dolar");
+	viewArray();
+
+}
